@@ -8,12 +8,19 @@ public class Duke {
 
         String[] list;
         String[] list2;
+        String[] s;
         String update;
+        String update_v2;
         int list_num;
+        int task_num = 0;
+        int event_num = 0;
+        int deadline_num = 0;
 
         list = new String[101];
 
         list2 = new String[101];
+
+        s = new String[101];
         for (int i = 0; i < 101; i += 1){
             list2[i] = "[ ]";
         }
@@ -35,7 +42,7 @@ public class Duke {
                     if (list[i].equals("")) {
                         break;
                     }
-                    System.out.println((i + 1) + ". " + list2[i] + " " + list[i]);
+                    System.out.println((i + 1) + ". " + s[i] + list2[i] + " " + list[i]);
                 }
                 System.out.println("____________________________________________________________");
 
@@ -44,6 +51,53 @@ public class Duke {
             else {
                 update = echo;
                 String[] parts = update.split(" ");
+
+                if (parts[0].equals("todo")){
+
+                    System.out.println("____________________________________________________________");
+                    System.out.println("I've added this for you");
+
+                    list[counter] = echo;
+                    s[counter] = "[T]";
+                    counter += 1;
+                    task_num += 1;
+                    System.out.println("Added new task: " + echo);
+                    System.out.println("you have" + " " + task_num + " tasks currently");
+
+                }
+                else if (parts[0].equals("deadline")){
+                    update_v2 = echo;
+                    String[] particles = update_v2.split("/");
+                    System.out.println("____________________________________________________________");
+                    System.out.println("I've added this for you");
+                    String[] paths = particles[0].split(" ");
+
+                    list[counter] = paths[1] + " " + paths[2] + " by: " + "(" + particles[1] + ")" ;
+                    s[counter] = "[D]";
+                    counter += 1;
+                    deadline_num += 1;
+                    System.out.println("Added new deadline: " + list[counter - 1]);
+                    System.out.println("you have" + " " + deadline_num + " deadlines currently");
+
+                }
+                if (parts[0].equals("event")){
+                    update_v2 = echo;
+                    String[] particles = update_v2.split("/");
+                    System.out.println("____________________________________________________________");
+                    System.out.println("I've added this for you");
+                    String[] paths = particles[0].split(" ");
+
+                    list[counter] = paths[1] + " " + paths[2] + " (from: " + particles[1] + " to "+ particles[2] + ")";
+                    s[counter] = "[E]";
+                    counter += 1;
+                    deadline_num += 1;
+
+                    System.out.println("Added new event: " + list[counter - 1]);
+                    System.out.println("you have" + " " + deadline_num + " events left");
+
+                }
+
+
                 if (parts[0].equals("mark") || parts[0].equals("unmark")){
                     list_num = Integer.parseInt(parts[1]);
                     if (parts[0].equals("mark")) {
@@ -52,11 +106,6 @@ public class Duke {
                     if (parts[0].equals("unmark")) {
                         list2[list_num - 1] = "[ ]";
                     }
-                }
-                else {
-                    list[counter] = echo;
-                    counter += 1;
-                   System.out.println("Added: " + echo);
                 }
             }
         }
