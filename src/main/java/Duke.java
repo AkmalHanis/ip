@@ -52,7 +52,7 @@ public class Duke {
                 update = echo;
                 String[] parts = update.split(" ");
 
-                if (parts[0].equals("todo")){
+                if (parts[0].equals("todo") && parts.length > 1){
 
                     System.out.println("____________________________________________________________");
                     System.out.println("I've added this for you");
@@ -65,7 +65,7 @@ public class Duke {
                     System.out.println("you have" + " " + task_num + " tasks currently");
 
                 }
-                else if (parts[0].equals("deadline")){
+                else if (parts[0].equals("deadline") && parts.length > 1){
                     update_v2 = echo;
                     String[] particles = update_v2.split("/");
                     System.out.println("____________________________________________________________");
@@ -80,7 +80,7 @@ public class Duke {
                     System.out.println("you have" + " " + deadline_num + " deadlines currently");
 
                 }
-                if (parts[0].equals("event")){
+                if (parts[0].equals("event") && parts.length > 1){
                     update_v2 = echo;
                     String[] particles = update_v2.split("/");
                     System.out.println("____________________________________________________________");
@@ -98,7 +98,7 @@ public class Duke {
                 }
 
 
-                if (parts[0].equals("mark") || parts[0].equals("unmark")){
+                if ((parts[0].equals("mark") || parts[0].equals("unmark")) && parts.length > 1){
                     list_num = Integer.parseInt(parts[1]);
                     if (parts[0].equals("mark")) {
                         list2[list_num - 1] = "[X]";
@@ -106,6 +106,31 @@ public class Duke {
                     if (parts[0].equals("unmark")) {
                         list2[list_num - 1] = "[ ]";
                     }
+                }
+                else{
+                    if (parts.length == 1){
+                        if (parts[0].equals("mark")){
+                            System.out.println("please include the number you want to mark");
+                        }
+                        else if (parts[0].equals("unmark")){
+                            System.out.println("please include the number you want to unmark");
+                        }
+                        else if (parts[0].equals("todo")){
+                            System.out.println("please include the activity you want to do");
+                        }
+                        else if (parts[0].equals("deadline")){
+                            System.out.println("please include the activity to add a deadline to");
+                        }
+                        else if (parts[0].equals("event")){
+                            System.out.println("please include the event you want to add");
+                        }
+                        else{
+                            System.out.println("I don't know what that means");
+                        }
+
+                    }
+
+
                 }
             }
         }
