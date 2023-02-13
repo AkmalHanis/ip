@@ -12,6 +12,7 @@ public class Duke {
         String update;
         String update_v2;
         int list_num;
+        int list_counter;
         int task_num = 0;
         int event_num = 0;
         int deadline_num = 0;
@@ -23,6 +24,12 @@ public class Duke {
         s = new String[101];
         for (int i = 0; i < 101; i += 1){
             list2[i] = "[ ]";
+        }
+        int[] indexes;
+        indexes = new int[101];
+
+        for (int i = 0; i < 101; i += 1){
+            indexes[i] = i;
         }
 
         int repeat = 1;
@@ -42,7 +49,22 @@ public class Duke {
                     if (list[i].equals("")) {
                         break;
                     }
-                    System.out.println((i + 1) + ". " + s[i] + list2[i] + " " + list[i]);
+                    if (!list[i].equals("deleted")){
+                        System.out.println((indexes[i + 1] + ". " + s[i] + list2[i] + " " + list[i]));
+                    }
+                    else{
+                        for (int x = i; x <= counter; x += 1){
+                            if (x + 1 < counter || list[x + 1].equals("deleted") ){
+                                break;
+                            }
+                            if (list[x + 1] != null) {
+                                list[x] = list[x + 1]; // update the deleted list
+                            }
+                        }
+                        for (int x = i; x < 101; x += 1){
+                            indexes[x] = x - 1;
+                        }
+                    }
                 }
                 System.out.println("____________________________________________________________");
 
@@ -51,6 +73,14 @@ public class Duke {
             else {
                 update = echo;
                 String[] parts = update.split(" ");
+
+                if(parts[0].equals("delete") && parts.length > 1){
+                    list_counter = task_num + deadline_num + event_num;
+                    System.out.println("Successfully deleted " + s[Integer.parseInt(parts[1]) - 1] + " " + list[Integer.parseInt(parts[1]) -1 ]);
+                    System.out.println("You have " + (list_counter - 1) + " number of items left in your list");
+                    list[Integer.parseInt(parts[1]) - 1] = "deleted";
+
+                }
 
                 if (parts[0].equals("todo") && parts.length > 1){
 
@@ -72,7 +102,7 @@ public class Duke {
                     System.out.println("I've added this for you");
                     String[] paths = particles[0].split(" ");
 
-                    list[counter] = paths[1] + " " + paths[2] + " by: " + "(" + particles[1] + ")" ;
+                    list[counter] = paths[1] + " " + paths[2] + "(" + particles[1] + ")" ;
                     s[counter] = "[D]";
                     counter += 1;
                     deadline_num += 1;
@@ -87,13 +117,13 @@ public class Duke {
                     System.out.println("I've added this for you");
                     String[] paths = particles[0].split(" ");
 
-                    list[counter] = paths[1] + " " + paths[2] + " (from: " + particles[1] + " to "+ particles[2] + ")";
+                    list[counter] = paths[1] + " " + paths[2] + "(" + particles[1] + " "+ particles[2] + ")";
                     s[counter] = "[E]";
                     counter += 1;
-                    deadline_num += 1;
+                    event_num += 1;
 
                     System.out.println("Added new event: " + list[counter - 1]);
-                    System.out.println("you have" + " " + deadline_num + " events left");
+                    System.out.println("you have" + " " + event_num + " events left");
 
                 }
 
