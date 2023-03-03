@@ -36,8 +36,13 @@ public class Duke {
 
     private static void printStart(){
         System.out.println("____________________________________________________________");
-        System.out.println("Hello! I'm duke.Duke");
+        System.out.println("Hello! I'm duke");
         System.out.println("What can I do for you?");
+    }
+    private static void printEnd(){
+        System.out.println("____________________________________________________________");
+        System.out.println("Bye hope to see you soon!");
+        System.out.println("____________________________________________________________");
     }
 
 
@@ -102,7 +107,6 @@ public class Duke {
 
 
             if (inputCommand.equals("bye")) {
-                repeat = 0;
                 System.out.println("Bye. Hope to see you again soon!");
                 System.out.println("____________________________________________________________");
                 return;
@@ -244,6 +248,7 @@ public class Duke {
         while (repeat == 1){
             String echo = enter.nextLine();
             if (echo.equals("bye")){
+                printEnd();
                 break;
             }
             runCheck(echo);
