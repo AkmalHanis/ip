@@ -36,25 +36,107 @@ User commands:
 ## Todo
 Example: todo Read Book
 
+```
+1. [ ][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+
+todo Smell Grass 
+
+1. [ ][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+4. [ ][T] Smell Grass 
+```
+
 ## Deadline
 Example: deadline Read Book /by sunday
+
+```
+1. [ ][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+
+deadline Read Book /by monday
+
+1. [ ][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+4. [ ][D] Read Book (by: monday) 
+```
 
 ## Event
 Example: event Read Book /from monday /to tuesday
 
+```
+1. [ ][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+
+event Read Book /from monday /to tuesday
+
+1. [ ][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+4. [ ][E] Read Book (from: monday to: tuesday) 
+```
+
 ## Mark/Unmark
 Example: Mark 1 / Unmark 1
+
+```
+1. [ ][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+
+mark 1
+
+1. [X][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+
+unamrk 1
+
+1. [ ][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+```
 
 ## Delete
 Example: Delete 1
 
+```
+1. [ ][T] Read Book
+2. [ ][T] Go Home
+3. [ ][T] Eat Food
+
+delete 2
+
+1. [ ][T] Read Book
+2. [ ][T] Eat Food
+
+```
 ## Find
 Example: Find Read Book
 
+```
+Find Read Book
+
+-------------------------------------------------
+Here are the Tasks which matches your word:
+
+1. [ ][T] Read Book
+
+```
+
 ## List
 Example: List
+
+```
 1. [ ][T] Read Book
 2. [ ][D] Read Magazine (by: Tuesday)
+
+```
 
 ```
 expected output
