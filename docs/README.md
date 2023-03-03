@@ -138,6 +138,4 @@ Example: List
 
 ```
 
-```
-expected output
-```
+
