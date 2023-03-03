@@ -17,9 +17,6 @@ public class Duke {
 
     private static ArrayList<String> taskMark = new ArrayList<>();
 
-
-
-
     private static void printFileContents(String filePath) throws FileNotFoundException {
         File f = new File(filePath); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
@@ -27,7 +24,6 @@ public class Duke {
             System.out.println(s.nextLine());
         }
     }
-    private static int counter = 0;
 
     private static int repeat = 1;
     private static int todoNum = 0;
@@ -39,18 +35,19 @@ public class Duke {
         System.out.println("Hello! I'm duke");
         System.out.println("What can I do for you?");
     }
+
     private static void printEnd(){
         System.out.println("____________________________________________________________");
         System.out.println("Bye hope to see you soon!");
         System.out.println("____________________________________________________________");
     }
 
-
     private static void printList() {
         for (int i = 0; i < taskList.size(); i += 1) {
             System.out.println((i + 1) + ". " + taskMark.get(i) + taskList.get(i));
         }
     }
+
     private static void printErrors(){
         System.out.println("Please include the task number you want to mark, unmark or delete!");
     }
@@ -225,7 +222,6 @@ public class Duke {
             }
         }
 
-
     public static void main(String[] args) {
         File f = new File("./data/chicken.txt");
         System.out.println("full path: " + f.getAbsolutePath());
@@ -241,7 +237,6 @@ public class Duke {
         printStart();
 
         Scanner enter = new Scanner(System.in);
-
         String file2 = "./data/chicken.txt";
         FileWriter fw;
 
@@ -256,11 +251,8 @@ public class Duke {
 
         try {
             fw = new FileWriter("./data/chicken.txt");
-            for (int i = 0; i < counter; i += 1) {
-                // words = words + list[i];
-
+            for (int i = 0; i < taskList.size(); i += 1) {
                 fw.write(taskList.get(i) + System.lineSeparator());;
-
             }
             fw.close();
         }
