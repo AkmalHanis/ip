@@ -18,6 +18,8 @@ public class Duke {
     private static ArrayList<String> taskMark = new ArrayList<>();
 
 
+
+
     private static void printFileContents(String filePath) throws FileNotFoundException {
         File f = new File(filePath); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
@@ -72,12 +74,6 @@ public class Duke {
     }
 
     private static void run_check(String userInput) {
-        String[] list2;
-        String[] s;
-        String update;
-        String update_v2;
-        int list_num;
-        int list_counter;
         int task_num = 0;
         int event_num = 0;
         int deadline_num = 0;
@@ -180,6 +176,30 @@ public class Duke {
                 }
 
             }
+            else if (inputCommand.equals("find")){
+                System.out.println("___________________________________________________________");
+                System.out.println("Here are the matching tasks found in your list: ");
+                String WordCheck = inputs[1];
+                int foundCounter = 1;
+                boolean foundMatch = false;
+                for (int i = 0; i < taskList.size(); i += 1){
+                    String TaskToCheck = taskList.get(i).toString();
+                    String[] words = TaskToCheck.split(" ");
+                    for (int j = 0; j < words.length; j += 1){
+                        if (words[j].equals(WordCheck)){
+                            foundMatch = true;
+                            break;
+                        }
+                    }
+                    if (foundMatch == true){
+                        System.out.println((foundCounter) + ". " + taskMark.get(i) + taskList.get(i));
+                        foundMatch = false;
+                        foundCounter += 1;
+                    }
+                }
+                System.out.println("___________________________________________________________");
+            }
+
             else{
                 System.out.println("I don't understand that command");
             }
